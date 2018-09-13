@@ -5,11 +5,20 @@
     <title>Rango</title>
 </head>
 <body>
-<h1>Rango diz...</h1>
+<h1>Bem vindo</h1>
+
 <div>
-    Bem vindo a aplicação Rango. <br />
-    <strong>{{ boldmessage }}</strong><br />
+    {% if categories %}
+        <ul>
+            {% for category in categories %}
+                <li>{{ category.name }} - {{ category.likes }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <strong>Nenhuma categoria cadastrada</strong>
+    {% endif %}
 </div>
+
 <div>
     <a href="/rango/about/">About</a><br />
     <img src="{% static "images/rango.jpg" %}"
