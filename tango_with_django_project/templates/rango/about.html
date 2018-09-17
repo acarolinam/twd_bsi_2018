@@ -1,21 +1,26 @@
 <!DOCTYPE html>
- {% load staticfiles %}
- <html>
- <head>
-     <title>Rango - About</title>
- </head>
- <body>
- <h1>Sobre o Rango</h1>
- <div>
-     O Rango é uma aplicação que tem por objetivo o gerenciamento de links.<br />
- </div>
- <div>
-     <img src="{% static "images/rango2.jpg" %}"
-          alt="Picture of Rango" />
-     <br/>
-     <a href="/rango/">Home</a>
-     <br/>
-     Essa página foi criada por {{ autor }}
- </div>
- </body>
- </html>
+{% load staticfiles %}
+<html>
+<head>
+    <title>Rango - About</title>
+</head>
+<body>
+<h1>Sobre o Rango</h1>
+<div>
+    O Rango é uma aplicação que tem por objetivo o gerenciamento de links.<br />
+</div>
+<div>
+    <img src="{% static "images/rango2.jpg" %}"
+         alt="Picture of Rango" />
+    <br/>
+    <img src="/media/rango_cartaz.jpg" alt="Picture of Rango" />
+    <br/>
+    <hr>
+    <a href="{% url 'index' %}">Home</a>
+    <br/>
+    Essa página foi criada por {{ autor }}
+</div>
+</div>
+</div>
+</body>
+</html>

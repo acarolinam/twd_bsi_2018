@@ -18,7 +18,7 @@ class IndexPageTests(TestCase):
         # Check if there is the message 'Rango Says'
         # Chapter 4
         response = self.client.get(reverse('index'))
-        self.assertIn(b'Rango says', response.content)
+        self.assertIn(b'Rango diz', response.content)
 
     def test_index_using_template(self):
         # Check the template used to render index page
@@ -46,7 +46,7 @@ class AboutPageTests(TestCase):
         # Check if in the about page is there - and contains the specified message
         # Exercise from Chapter 4
         response = self.client.get(reverse('about'))
-        self.assertIn(b'This tutorial has been put together by', response.content)
+        self.assertIn(b'criada por', response.content)
 
     def test_about_contain_image(self):
         # Check if is there an image on the about page
@@ -101,12 +101,12 @@ class Chapter4ViewTests(TestCase):
     def test_index_contains_hello_message(self):
         # Check if there is the message 'hello world!'
         response = self.client.get(reverse('index'))
-        self.assertIn('Rango says', response.content)
+        self.assertIn(b'Rango diz', response.content)
 
     def test_does_index_contain_img(self):
         # Check if the index page contains an img
         response = self.client.get(reverse('index'))
-        self.assertIn('img', response.content)
+        self.assertIn(b'img', response.content)
 
     def test_about_using_template(self):
         # Check the template used to render index page
@@ -118,12 +118,12 @@ class Chapter4ViewTests(TestCase):
     def test_does_about_contain_img(self):
         # Check if in the about page contains an image
         response = self.client.get(reverse('about'))
-        self.assertIn('img', response.content)
+        self.assertIn(b'img', response.content)
 
     def test_about_contains_create_message(self):
         # Check if in the about page contains the message from the exercise
         response = self.client.get(reverse('about'))
-        self.assertIn('This tutorial has been put together by', response.content)
+        self.assertIn(b'criada por', response.content)
 
 
 class Chapter5ViewTests(TestCase):
@@ -141,7 +141,7 @@ class Chapter5ViewTests(TestCase):
 
     def get_category(self, name):
 
-        from rango.models import Category
+        from .models import Category
         try:
             cat = Category.objects.get(name=name)
         except Category.DoesNotExist:
@@ -165,16 +165,16 @@ class Chapter5ViewTests(TestCase):
         response = self.client.get(reverse('index'))
 
         # Check title used correctly
-        self.assertIn('<title>', response.content)
-        self.assertIn('</title>', response.content)
+        self.assertIn(b'<title>', response.content)
+        self.assertIn(b'</title>', response.content)
 
     # Need to add tests to:
     # check admin interface - is it configured and set up
 
     def test_admin_interface_page_view(self):
-        from admin import PageAdmin
+        from .admin import PageAdmin
         self.assertIn('category', PageAdmin.list_display)
-        self.assertIn('url', PageAdmin.list_display)
+        self.assertIn('views', PageAdmin.list_display)
 
 
 class Chapter6ViewTests(TestCase):
@@ -196,7 +196,7 @@ class Chapter6ViewTests(TestCase):
 
     # test the slug field works..
     def test_does_slug_field_work(self):
-        from rango.models import Category
+        from .models import Category
         cat = Category(name='how do i create a slug in django')
         cat.save()
         self.assertEqual(cat.slug, 'how-do-i-create-a-slug-in-django')
@@ -212,30 +212,30 @@ class Chapter6ViewTests(TestCase):
     # test does category page contain a link back to index page?
 
 
-class Chapter7ViewTests(TestCase):
-
-    def setUp(self):
-        try:
-            from forms import PageForm
-            from forms import CategoryForm
-
-        except ImportError:
-            print('The module forms does not exist')
-        except NameError:
-            print('The class PageForm does not exist or is not correct')
-        except:
-            print('Something else went wrong :-(')
-
-    pass
-    # test is there a PageForm in rango.forms
-
-    # test is there a CategoryForm in rango.forms
-
-    # test is there an add page page?
-
-    # test is there an category page?
-
-    # test if index contains link to add category page
-    # <a href="/rango/add_category/">Add a New Category</a><br />
-
-    # test if the add_page.html template exists.
+# class Chapter7ViewTests(TestCase):
+#
+#     def setUp(self):
+#         try:
+#             from forms import PageForm
+#             from forms import CategoryForm
+#
+#         except ImportError:
+#             print('The module forms does not exist')
+#         except NameError:
+#             print('The class PageForm does not exist or is not correct')
+#         except:
+#             print('Something else went wrong :-(')
+#
+#     pass
+#     # test is there a PageForm in rango.forms
+#
+#     # test is there a CategoryForm in rango.forms
+#
+#     # test is there an add page page?
+#
+#     # test is there an category page?
+#
+#     # test if index contains link to add category page
+#     # <a href="/rango/add_category/">Add a New Category</a><br />
+#
+#     # test if the add_page.html template exists.

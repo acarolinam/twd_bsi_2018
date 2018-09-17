@@ -5,26 +5,48 @@
     <title>Rango</title>
 </head>
 <body>
-<h1>Bem vindo</h1>
+<h1>Rango diz...</h1>
+<div>
+    Olá parceiro! <br />
+</div>
 
+<h2>Categorias mais curtidas</h2>
 <div>
     {% if categories %}
-        <ul>
+        <ol>
             {% for category in categories %}
-                <li>{{ category.name }} - {{ category.likes }}</li>
+{#                <li><a href="/rango/category/{{ category.slug }}"> {{ category.name }}</a> ({{ category.likes }})</li>#}
+                <li><a href="{% url 'show_category' category.slug %}"> {{ category.name }}</a> ({{ category.likes }})</li>
             {% endfor %}
-        </ul>
+        </ol>
     {% else %}
-        <strong>Nenhuma categoria cadastrada</strong>
+        <strong>Não há categorias cadastradas.</strong>
     {% endif %}
 </div>
 
+<h2>Páginas mais acessadas</h2>
 <div>
-    <a href="/rango/about/">About</a><br/>
+    {% if pages %}
+        <ol>
+            {% for page in pages %}
+                <li><a href="{{ page.url }}"> {{ page.title }}</a> ({{ page.views }})</li>
+            {% endfor %}
+        </ol>
+    {% else %}
+        <strong>Não há páginas cadastradas.</strong>
+    {% endif %}
+</div>
+
+
+<div>
     <img src="{% static "images/rango.jpg" %}"
          alt="Picture of Rango" />
+    <br/>
     <hr>
-    {{ autor }}
+    <a href="{% url 'about' %}">About</a><br />
+
+</div>
+</div>
 </div>
 </body>
 </html>
