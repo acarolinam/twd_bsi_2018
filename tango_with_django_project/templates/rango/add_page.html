@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rango - Adicionar Página</title>
+</head>
+<body>
+{% if category %}
+    <div>
+        <h1>Adicionar Página em {{ category.name }}</h1>
+        {#    <form id="category_form" method="post" action="/rango/add_category/">#}
+        <form id="page_form" method="post" action="{%  url 'add_page' category.slug %}">
+            {% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+            {% for field in form.visible_fields %}
+                {{ field.errors }}
+                {{ field.help_text }}
+                {{ field }}
+            {% endfor %}
+            {#        {{ form }}#}
+            <input type="submit" name="submit" value="Criar Página em {{category.name}}" />
+        </form>
+    </div>
+{%  else %}
+    <p>Essa categoria não existe.</p>
+{% endif %}
+    <hr>
+    <a href="{% url 'index' %}">Home</a>
+</div>
+</body>
+</html>

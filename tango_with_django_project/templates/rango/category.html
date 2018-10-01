@@ -10,7 +10,7 @@
         {% if pages %}
             <ul>
                 {% for page in pages %}
-                    <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+                    <li><a _target='blank' href="{{ page.url }}">{{ page.title }}</a></li>
                 {% endfor %}
             </ul>
         {% else %}
@@ -23,6 +23,10 @@
 <div>
     <br/>
     <hr>
+    {#    <a href="/rango/{{ category.slug }}/add_page">Adicionar Página em {{ category.name }}</a><br />#}
+    {% if category %}
+        <a href="{% url 'add_page' category.slug %}">Adicionar Página em {{ category.name }}</a><br />
+    {% endif %}
     <a href="{% url 'index' %}">Voltar para home</a>
 </div>
 </body>
