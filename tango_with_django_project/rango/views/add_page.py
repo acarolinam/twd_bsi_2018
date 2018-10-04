@@ -5,6 +5,7 @@ from django.views.generic.base import View
 from ..forms import PageForm
 from ..models import Category
 
+
 class Add_Page(View):
     form_class = PageForm
     initial = {}
