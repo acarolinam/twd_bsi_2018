@@ -1,9 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Rango - Adicionar Página</title>
-</head>
-<body>
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    Adicionar Página
+{% endblock %}
+
+{% block body_block %}
 {% if category %}
     <div>
         <h1>Adicionar Página em {{ category.name }}</h1>
@@ -25,8 +27,4 @@
 {%  else %}
     <p>Essa categoria não existe.</p>
 {% endif %}
-    <hr>
-    <a href="{% url 'index' %}">Home</a>
-</div>
-</body>
-</html>
+{% endblock %}

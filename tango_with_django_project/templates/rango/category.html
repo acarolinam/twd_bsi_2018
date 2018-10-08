@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Rango - {{ category.name }}</title>
-</head>
-<body>
-<div>
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+{{ category.name }}
+{% endblock %}
+
+{% block body_block %}
     {% if category %}
         <h1>{{ category.name }}</h1>
         {% if pages %}
@@ -19,15 +20,9 @@
     {% else %}
         A categoria especificada não existe!
     {% endif %}
-</div>
-<div>
-    <br/>
-    <hr>
-    {#    <a href="/rango/{{ category.slug }}/add_page">Adicionar Página em {{ category.name }}</a><br />#}
+
     {% if category %}
         <a href="{% url 'add_page' category.slug %}">Adicionar Página em {{ category.name }}</a><br />
     {% endif %}
     <a href="{% url 'index' %}">Voltar para home</a>
-</div>
-</body>
-</html>
+{% endblock %}

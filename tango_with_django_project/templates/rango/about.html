@@ -1,11 +1,12 @@
-<!DOCTYPE html>
+{% extends 'rango/base.html' %}
 {% load staticfiles %}
-<html>
-<head>
-    <title>Rango - About</title>
-</head>
-<body>
-<h1>Sobre o Rango</h1>
+
+{% block title_block %}
+    About
+{% endblock %}
+
+{% block body_block %}
+    <h1>Sobre o Rango</h1>
 <div>
     O Rango é uma aplicação que tem por objetivo o gerenciamento de links.<br />
 </div>
@@ -20,5 +21,4 @@
     <br/>
     Essa página foi criada por {{ autor }}
 </div>
-</body>
-</html>
+{% endblock %}
