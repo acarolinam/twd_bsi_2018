@@ -101,7 +101,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
@@ -121,6 +120,6 @@ USE_TZ = True
 STATICFILES_DIRS = [STATIC_DIR, ]
 STATIC_URL = '/static/'
 
-#Media files (upload, etc.)
+# Media files (upload, etc.)
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
