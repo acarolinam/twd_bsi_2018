@@ -2,18 +2,26 @@
 {% load staticfiles %}
 
 {% block title_block %}
+    Home
 {% endblock %}
 
-{% block body_block %}
-<h1>Rango diz...</h1>
-<div>
+{% block titulo_block %}
+    Rango diz...
+{% endblock %}
+
+{% block subtitulo_block %}
+    <div>
     {% if user.is_authenticated %}
         howdy {{ user.username }}!
     {% else %}
         hey there partner!
     {% endif %}
-</div>
+    </div>
+{% endblock %}
 
+
+
+{% block body_block %}
 <h2>Categorias mais curtidas</h2>
 <div>
     {% if categories %}
