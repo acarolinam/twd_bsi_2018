@@ -30,16 +30,31 @@
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" href="#">Rango</a>
+      <a class="navbar-brand" href="{% url 'index' %}">Rango</a>
 
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
-          </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'about' %}">About</a>
           </li>
+          {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'restricted' %}">Restricted Page</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'add_category' %}">Add a New Category</a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Sign In</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'register' %}">Sign Up</a>
+            </li>
+          {% endif %}
         </ul>
       </div>
     </nav>
@@ -80,19 +95,10 @@
         </div><!--/span-->
       </div><!--/row-->
 
-      <hr>
-
       <footer>
-              <ul>
-        {% if user.is_authenticated %}
-            <li><a href="{% url 'restricted' %}">Restricted Page</a></li>
-            <li><a href="{% url 'logout' %}">Logout</a></li>
-            <li><a href="{% url 'add_category' %}">Add a New Category</a></li>
-        {% else %}
-            <li><a href="{% url 'login' %}">Sign In</a></li>
-            <li><a href="{% url 'register' %}">Sign Up</a></li>
-        {% endif %}
-    </ul>
+          <br/>
+          <br/>
+          <br/>
       </footer>
 
     </div><!--/.container-->
