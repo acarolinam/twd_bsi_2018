@@ -1,9 +1,15 @@
 migrations/
-.idea/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
+
+
+#pasta media
+media/
+
+#Pasta do Pycharm
+.idea/
 
 # C extensions
 *.so
