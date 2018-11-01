@@ -2,29 +2,29 @@
 {% load staticfiles %}
 
 {% block title_block %}
-    Login
+    Entrar
 {% endblock %}
 
 {% block titulo_block %}
-    Login to Rango
+    Entrar em Rango
 {% endblock %}
 
 {% block subtitulo_block %}
-
+    Informe seus dados
 {% endblock %}
 
 {% block body_block %}
-    <div class="col-sm-4">
-      <form id="login_form" method="post" action="{% url 'login' %}">
+    <form class="form-signin" role="form" method="post" action=".">
         {% csrf_token %}
-
-        <label for="inputUsername" class="sr-only">Username</label>
-        <input type="text" name="username" id="id_username" class="form-control" placeholder="Username" required autofocus>
-
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" name="password" id="id_password" class="form-control" placeholder="Password" required>
-
-        <button class="btn btn-lg btn-primary btn-block" type="submit"  value="Submit">Sign in</button>
+        <label for="inputUsername" class="sr-only">Nome do usuário:</label>
+        <input type="text" name="username" id="id_username" class="form-control"
+               placeholder="Username" required autofocus>
+        <label for="inputPassword" class="sr-only">Senha:</label>
+        <input type="password" name="password" id="id_password" class="form-control"
+               placeholder="Password" required>
+        <br/>
+        <button class="btn btn-lg btn-primary btn-block" type="submit"
+                value="Submit" >Entrar</button>
     </form>
-    </div>
+    <p>Não é um membro ainda? <a href="{% url 'register' %}">Registre-se</a>!</p>
 {% endblock %}

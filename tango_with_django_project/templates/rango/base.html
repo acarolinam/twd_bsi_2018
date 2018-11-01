@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {% load staticfiles %}
 {% load rango_template_tags %}
+
 <html lang="pt">
   <head>
     <meta charset="utf-8">
@@ -26,7 +27,7 @@
 
   <body
     style="padding-top: 80px;">
-    <nav class="navbar navbar-toggleable-md fixed-top navbar-inverse bg-inverse">
+    <nav class="navbar navbar-light navbar-toggleable-md fixed-top bg-primary navbar-inverse">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -35,24 +36,28 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'about' %}">About</a>
+            <a class="nav-link" href="{% url 'about' %}">Sobre</a>
           </li>
           {% if user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'restricted' %}">Restricted Page</a>
+                <a class="nav-link" href="{% url 'restricted' %}">Página restrita</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                <a class="nav-link" href="{% url 'add_category' %}">Adicionar nova categoria</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'add_category' %}">Add a New Category</a>
+                <a class="nav-link pull-right" href="{% url 'logout' %}">Sair</a>
             </li>
+              <form class="form-inline my-2 my-lg-0">
+
+
+
           {% else %}
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'login' %}">Sign In</a>
+                <a class="nav-link" href="{% url 'login' %}">Entrar</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'register' %}">Sign Up</a>
+                <a class="nav-link" href="{% url 'register' %}">Registrar-se</a>
             </li>
           {% endif %}
         </ul>
@@ -90,6 +95,7 @@
               {% block sidebar_block %}
                 <h1>Categorias</h1>
                   {% get_category_list category %}
+                  <img src="{% static "images/rango.jpg" %}" alt="Picture of Rango" />
               {% endblock %}
           </div>
         </div><!--/span-->
