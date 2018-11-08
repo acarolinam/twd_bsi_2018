@@ -16,6 +16,7 @@
 {% endblock %}
 
 {% block body_block %}
+
 <div>
     <img src="{% static "images/rango2.jpg" %}"
          alt="Picture of Rango" />
@@ -24,6 +25,11 @@
     <img src="/media/rango_cartaz.jpg" alt="Picture of Rango" />
     <br/>
     <br/>
+    <button class="btn btn-primary"
+            onClick="alert('Você clicou no botão para rodar JavaScript.');">
+        Click Me - Rode JavaScript
+    </button>
+    <br/><br/>
     Essa página foi criada por {{ autor }}
 </div>
 {% endblock %}

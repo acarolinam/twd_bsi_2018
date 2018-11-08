@@ -18,22 +18,29 @@
 
 {% block body_block %}
     {% if category %}
+        <strong id="like_count">{{ category.likes }}</strong> curtidas
+            {% if user.is_authenticated %}
+                <button id="likes" data-catid="{{category.id}}"
+                        class="btn btn-primary btn-sm" type="button">
+                    Curtir
+                </button>
+            {% endif %}
         {% if pages %}
-            <ul>
-                {% for page in pages %}
-                            <li class="list-group-item justify-content-between">
-{#                                <a href="{{ page.url }}"> {{ page.title}}</a>#}
-{#                                <a href="{% url 'goto' %}?page_id={{page.id}}"\> {{ page.title}}</a>#}
-                                <a href="{% url 'goto' page.id%}"> {{ page.title}}</a>
-                                <span class="badge badge-default badge-pill">{{ page.views }}</span>
-                            </li>
-                        {% endfor %}
-            </ul>
+            <div class="col-lg-12">
+                <ul class="list-group">
+                    {% for page in pages %}
+                        <li class="list-group-item justify-content-between">
+                            {#                                <a href="{{ page.url }}"> {{ page.title}}</a>#}
+                            {#                                <a href="{% url 'goto' %}?page_id={{page.id}}"\> {{ page.title}}</a>#}
+                            <a href="{% url 'goto' page.id%}"\> {{ page.title}}</a>
+                            <span class="badge badge-default badge-pill">{{ page.views }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
         {% else %}
             <strong>Não há páginas nessa categoria.</strong>
         {% endif %}
-    {% else %}
-        A categoria especificada não existe!
     {% endif %}
 
     {% if category %}

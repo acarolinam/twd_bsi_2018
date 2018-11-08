@@ -24,35 +24,35 @@
 <br/>
 <div>
     {% if categories %}
-                    <ul class="list-group" >
-                        {% for category in categories %}
-                            <li class="list-group-item justify-content-between">
-                                <a href="{% url 'show_category' category.slug %}"> {{ category.name }}</a>
-                                <span class="badge badge-default badge-pill">{{ category.likes }}</span>
+        <ul class="list-group" >
+            {% for category in categories %}
+                <li class="list-group-item justify-content-between">
+                    <a href="{% url 'show_category' category.slug %}"> {{ category.name }}</a>
+                    <span class="badge badge-default badge-pill">{{ category.likes }}</span>
 {#                                <span class="badge badge-default badge-pill">{{ category.views }}</span>#}
-                            </li>
-                        {% endfor %}
-                    </ul>
-                {% else %}
-                    <strong>Não há categorias cadastradas.</strong>
-                {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <strong>Não há categorias cadastradas.</strong>
+    {% endif %}
 </div>
 <br/>
 <h2>Páginas mais acessadas</h2>
 <br/>
 <div>
     {% if pages %}
-                    <ul class="list-group">
-                        {% for page in pages %}
-                            <li class="list-group-item justify-content-between">
-                                <a href="{{ page.url }}"> {{ page.title}}</a>
-                                <span class="badge badge-default badge-pill">{{ page.views }}</span>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                {% else %}
-                    <strong>Não há páginas cadastradas.</strong>
-                {% endif %}
+        <ul class="list-group">
+            {% for page in pages %}
+                <li class="list-group-item justify-content-between">
+                    <a href="{{ page.url }}"> {{ page.title}}</a>
+                    <span class="badge badge-default badge-pill">{{ page.views }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <strong>Não há páginas cadastradas.</strong>
+    {% endif %}
 </div>
 
 {% endblock %}
