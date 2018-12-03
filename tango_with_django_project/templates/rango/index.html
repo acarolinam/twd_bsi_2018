@@ -45,7 +45,7 @@
         <ul class="list-group">
             {% for page in pages %}
                 <li class="list-group-item justify-content-between">
-                    <a href="{{ page.url }}"> {{ page.title}}</a>
+                    <a href="{% url 'goto' page.id%}"> {{ page.title}}</a>
                     <span class="badge badge-default badge-pill">{{ page.views }}</span>
                 </li>
             {% endfor %}

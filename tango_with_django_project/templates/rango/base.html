@@ -40,9 +40,6 @@
           </li>
           {% if user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'restricted' %}">Página restrita</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="{% url 'add_category' %}">Adicionar nova categoria</a>
             </li>
             <li class="nav-item">
