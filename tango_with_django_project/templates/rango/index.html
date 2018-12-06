@@ -2,57 +2,38 @@
 {% load staticfiles %}
 
 {% block title_block %}
-    Inicio
-{% endblock %}
-
-{% block titulo_block %}
-    Rango diz...
-{% endblock %}
-
-{% block subtitulo_block %}
-    <div>
-    {% if user.is_authenticated %}
-        howdy {{ user.username }}!
-    {% else %}
-        hey there partner!
-    {% endif %}
-    </div>
 {% endblock %}
 
 {% block body_block %}
+<h1>Rango diz...</h1>
+<div>
+    Olá parceiro! <br />
+</div>
+
 <h2>Categorias mais curtidas</h2>
-<br/>
 <div>
     {% if categories %}
-        <ul class="list-group" >
+        <ol>
             {% for category in categories %}
-                <li class="list-group-item justify-content-between">
-                    <a href="{% url 'show_category' category.slug %}"> {{ category.name }}</a>
-                    <span class="badge badge-default badge-pill">{{ category.likes }}</span>
-{#                                <span class="badge badge-default badge-pill">{{ category.views }}</span>#}
-                </li>
+                <li><a href="{% url 'show_category' category.slug %}"> {{ category.name }}</a> ({{ category.likes }})</li>
             {% endfor %}
-        </ul>
+        </ol>
     {% else %}
         <strong>Não há categorias cadastradas.</strong>
     {% endif %}
 </div>
-<br/>
+
 <h2>Páginas mais acessadas</h2>
-<br/>
 <div>
     {% if pages %}
-        <ul class="list-group">
+        <ol>
             {% for page in pages %}
-                <li class="list-group-item justify-content-between">
-                    <a href="{% url 'goto' page.id%}"> {{ page.title}}</a>
-                    <span class="badge badge-default badge-pill">{{ page.views }}</span>
-                </li>
+                <li><a href="{{ page.url }}"> {{ page.title }}</a> ({{ page.views }})</li>
             {% endfor %}
-        </ul>
+        </ol>
     {% else %}
         <strong>Não há páginas cadastradas.</strong>
     {% endif %}
 </div>
-
+<img src="{% static "images/rango.jpg" %}" alt="Picture of Rango" />
 {% endblock %}

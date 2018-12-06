@@ -5,12 +5,8 @@
 Adicionar Categoria
 {% endblock %}
 
-{% block subtitulo_block %}
-<h1>Adicionar Categoria</h1>
-{% endblock %}
-
-
 {% block body_block %}
+    <h1>Adicionar Categoria</h1>
     <div>
 {#    <form id="category_form" method="post" action="/rango/add_category/">#}
     <form id="category_form" method="post" action="{%  url 'add_category' %}">
@@ -28,4 +24,3 @@ Adicionar Categoria
     </form>
 </div>
 {% endblock %}
-

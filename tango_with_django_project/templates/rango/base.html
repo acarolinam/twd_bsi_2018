@@ -1,127 +1,27 @@
 <!DOCTYPE html>
 {% load staticfiles %}
-{% load rango_template_tags %}
-
 <html lang="pt">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-{#    <link rel="icon" href="../../favicon.ico">#}
-
+<head>
+    <meta charset="UTF-8">
     <title>
         Rango -
         {% block title_block %}
         How to Tango with Django!
         {% endblock %}
     </title>
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/offcanvas/">
-
-    <!-- Bootstrap core CSS -->
-      <link href="http://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="http://v4-alpha.getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
-  </head>
-
-  <body
-    style="padding-top: 80px;">
-    <nav class="navbar navbar-light navbar-toggleable-md fixed-top bg-primary navbar-inverse">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <a class="navbar-brand" href="{% url 'index' %}">Rango</a>
-
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'about' %}">Sobre</a>
-          </li>
-          {% if user.is_authenticated %}
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'add_category' %}">Adicionar nova categoria</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link pull-right" href="{% url 'logout' %}">Sair</a>
-            </li>
-              <form class="form-inline my-2 my-lg-0">
-
-
-
-          {% else %}
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'login' %}">Entrar</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'register' %}">Registrar-se</a>
-            </li>
-          {% endif %}
-        </ul>
-      </div>
-    </nav>
-
-    <div class="container">
-
-      <div class="row row-offcanvas row-offcanvas-right">
-
-        <div class="col-12 col-md-9">
-          <p class="float-right hidden-md-up">
-            <button type="button" class="btn btn-primary btn-sm" data-toggle="offcanvas">Toggle nav</button>
-          </p>
-          <div class="jumbotron">
-            <h1>
-                {% block titulo_block %}
-                {% endblock %}
-            </h1>
-            <p>
-                {% block subtitulo_block %}
-                {% endblock %}
-            </p>
-          </div>
-          <div class="row">
-            <div class="col">
-                  {% block body_block %}
-                  {% endblock %}
-            </div><!--/span-->
-          </div><!--/row-->
-        </div><!--/span-->
-
-        <div class="col-6 col-md-3 sidebar-offcanvas" id="sidebar">
-          <div class="list-group">
-              {% block sidebar_block %}
-                <h1>Categorias</h1>
-                  {% get_category_list category %}
-                  <img src="{% static "images/rango.jpg" %}" alt="Picture of Rango" />
-              {% endblock %}
-          </div>
-        </div><!--/span-->
-      </div><!--/row-->
-
-      <footer>
-          <br/>
-          <br/>
-          <br/>
-      </footer>
-
-    </div><!--/.container-->
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-{#    <script src="{% static 'js/jquery.min.js' %}"> </script>#}
-    <script src="{% static "js/rango-ajax.js" %}"></script>
-    <script src="{% static 'js/rango-jquery.js' %}"> </script>
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-{#    <script src="../dist/js/bootstrap.min.js"></script>#}
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-{#    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>#}
-    <script src="offcanvas.js"></script>
-{#    <script src="{% static 'js/bootstrap.min.js' %}"> </script>#}
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-{#    <script src="{% static 'js/ie10-viewport-bug-workaround.js' %}"> </script>#}
-  </body>
+</head>
+<body>
+<div>
+    {% block body_block %}
+    {% endblock %}
+</div>
+<hr />
+<div>
+    <ul>
+        <li><a href="{% url 'add_category' %}">Add New Category</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
+        <li><a href="{% url 'index' %}">Index</a></li>
+    </ul>
+</div>
+</body>
 </html>
