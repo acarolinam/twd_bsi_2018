@@ -1,13 +1,13 @@
-from .models import Category, Page
 from django import forms
-from .models import Category
+from .models import Category, Page, UserProfile
+from django.contrib.auth.models import User
 
 
 class CategoryForm(forms.ModelForm):
     name = forms.CharField(max_length=128,
                            help_text="Categoria: ")
-    views = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
-    likes = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
+    views = forms.IntegerField(widget=forms.HiddenInput(), initial=0, required=False)
+    likes = forms.IntegerField(widget=forms.HiddenInput(), initial=0, required=False)
     slug = forms.CharField(widget=forms.HiddenInput(), required=False)
 
     class Meta:
@@ -34,3 +34,17 @@ class PageForm(forms.ModelForm):
     class Meta:
         model = Page
         exclude = ('category',)
+
+
+class UserForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput())
+
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'password')
+
+
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ('website', 'picture')
