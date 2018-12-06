@@ -1,1 +1,0 @@
-from .rango_template_tags import get_category_list
