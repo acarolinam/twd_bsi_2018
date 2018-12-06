@@ -1,27 +1,69 @@
 <!DOCTYPE html>
+
 {% load staticfiles %}
-<html lang="pt">
+{% load rango_template_tags %}
+
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+{#    <link rel="icon" href="{% static 'images/favicon.ico' %}">#}
+
     <title>
-        Rango -
-        {% block title_block %}
-        How to Tango with Django!
-        {% endblock %}
+        Rango - {% block title %}How to Tango with Django!{% endblock title%}
     </title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="http://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="http://v4-alpha.getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
 </head>
-<body>
-<div>
-    {% block body_block %}
-    {% endblock %}
+
+<body style="padding-top: 80px;">
+<nav class="navbar navbar-light navbar-toggleable-md fixed-top bg-primary navbar-inverse">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+     </button>
+
+    <a class="navbar-brand" href="{% url 'index' %}">Rango</a>
+
+    <div class="collapse navbar-collapse" id="navbar">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item"> <a class="nav-link" href="{% url 'about' %}"> About </a> </li>
+            <li class="nav-item"> <a class="nav-link" href="/admin/">Admin</a></li>
+            {% if user.is_authenticated %}
+                <li class="nav-item"> <a class="nav-link" href="{% url 'restricted' %}">Página Restrita</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{% url 'add_category' %}">Adicionar Nova Categoria</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{% url 'logout' %}">Sair</a></li>
+            {% else %}
+                <li class="nav-item"> <a class="nav-link" href="{% url 'register' %}">Registrar-se</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{% url 'login' %}">Entrar</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            {% block sidebar_block %}
+                {% get_category_list category %}
+            {% endblock sidebar_block%}
+        </div>
+        <div class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 main">
+            {% block body_block %}{% endblock body_block%}
+        </div>
+    </div>
 </div>
-<hr />
-<div>
-    <ul>
-        <li><a href="{% url 'add_category' %}">Add New Category</a></li>
-        <li><a href="{% url 'about' %}">About</a></li>
-        <li><a href="{% url 'index' %}">Index</a></li>
-    </ul>
-</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"> </script>
+<script src="http://v4-alpha.getbootstrap.com/dist/js/bootstrap.min.js"> </script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="http://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"> </script>
 </body>
 </html>

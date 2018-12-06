@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rango',
+    'bootstrap_toolkit',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -124,3 +125,5 @@ STATIC_URL = '/static/'
 #Media files (upload, etc.)
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
+
+LOGIN_URL = '/rango/login/'
