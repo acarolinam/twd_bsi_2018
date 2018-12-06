@@ -5,10 +5,18 @@
     {{ category.name }}
 {% endblock title_block%}
 
+{% block titulo_block %}
+    Páginas da categoria <a href="{% url 'show_category' category.slug %}"> {{ category.name }}</a>
+{% endblock %}
+
+
+{% block subtitulo_block %}
+    Veja as páginas cadastradas na categoria {{category.name}}
+{% endblock %}
+
 {% block body_block %}
     <div>
         {% if category %}
-            <h1>{{ category.name }}</h1>
             {% if pages %}
                 <ul>
                     {% for page in pages %}

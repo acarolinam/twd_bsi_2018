@@ -5,13 +5,23 @@
     Registre-se
 {% endblock title_block%}
 
-{% block body_block %}
-    <h1>Registre-se para o Rango</h1>
+{% block titulo_block %}
+    Informe seus dados para se cadastrar no Rango!
+{% endblock %}
+
+
+{% block subtitulo_block %}
     {% if registered %}
-        Rango diz: <strong>obrigado por se registrar!</strong>
+        Rango diz: <strong>Você já está cadastrado!</strong>
+    {% else %}
+        Rango diz: <strong>Registre-se aqui!</strong><br />
+    {% endif %}
+{% endblock %}
+
+{% block body_block %}
+    {% if registered %}
         <a href="{% url 'index' %}">Volte à página principal.</a><br />
     {% else %}
-        Rango diz: <strong>registre-se aqui!</strong><br />
         <form id="user_form" method="post" action="{% url 'register' %}"
               enctype="multipart/form-data">
             {% csrf_token %}

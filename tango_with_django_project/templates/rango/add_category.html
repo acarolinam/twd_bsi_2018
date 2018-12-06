@@ -2,13 +2,17 @@
 {% load staticfiles %}
 
 {% block title_block %}
-Adicionar Categoria
+    Adicionar Categoria
 {% endblock %}
 
+
+{% block titulo_block %}
+    Adicione uma nova categoria
+{% endblock %}
+
+
 {% block body_block %}
-    <h1>Adicionar Categoria</h1>
     <div>
-{#    <form id="category_form" method="post" action="/rango/add_category/">#}
     <form id="category_form" method="post" action="{%  url 'add_category' %}">
         {% csrf_token %}
         {% for hidden in form.hidden_fields %}
@@ -19,8 +23,10 @@ Adicionar Categoria
             {{ field.help_text }}
             {{ field }}
         {% endfor %}
-{#        {{ form }}#}
-        <input type="submit" name="submit" value="Criar Categoria" />
+        <button class="btn btn-primary" type="submit" name="submit">
+            Criar categoria
+        </button>
+        {#<input type="submit" name="submit" value="Criar Categoria" />#}
     </form>
 </div>
 {% endblock %}

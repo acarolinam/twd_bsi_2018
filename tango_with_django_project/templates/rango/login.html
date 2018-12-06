@@ -1,18 +1,34 @@
 {% extends 'rango/base.html' %}
 {% load staticfiles %}
 
+
 {% block title_block %}
     Login
 {% endblock title_block%}
 
-{% block body_block %}
-    <h1>Login para Rango</h1>
-    <form id="login_form" method="post" action="{% url 'login' %}">
+
+{% block titulo_block %}
+    Informe seus dados:
+{% endblock %}
+
+
+{% block subtitulo_block %}
+        <link href="http://v4-alpha.getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
+    <form class="form-signin" role="form" method="post" action=".">
         {% csrf_token %}
-        Nome do usuário: <input type="text" name="username" value="" size="50" />
-        <br />
-        Senha: <input type="password" name="password" value="" size="50" />
-        <br />
-        <input type="submit" value="Login" />
+        <label for="inputUsername" class="sr-only">Nome do usuário:</label>
+        <input type="text" name="username" id="id_username" class="form-control"
+               placeholder="Username" required autofocus>
+        <label for="inputPassword" class="sr-only">Senha:</label>
+        <input type="password" name="password" id="id_password" class="form-control"
+               placeholder="Password" required>
+        <button class="btn btn-lg btn-primary btn-block" type="submit"
+                value="Submit" />Entrar</button>
     </form>
+    <br/>
+    <p>Não é um membro ainda? <a href="{% url 'register' %}">Registre-se</a>!</p>
+{% endblock %}
+
+{% block body_block %}
+
 {% endblock %}

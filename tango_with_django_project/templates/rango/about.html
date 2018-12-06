@@ -5,20 +5,28 @@
     About
 {% endblock %}
 
+
+{% block titulo_block %}
+    Sobre o Rango
+{% endblock %}
+
+
+{% block subtitulo_block %}
+    O Rango é uma aplicação que tem por objetivo o gerenciamento de links.
+{% endblock %}
+
 {% block body_block %}
-    <h1>Sobre o Rango</h1>
-<div>
-    O Rango é uma aplicação que tem por objetivo o gerenciamento de links.<br />
-</div>
+
 <div>
     <img src="{% static "images/rango2.jpg" %}"
          alt="Picture of Rango" />
     <br/>
+    <br/>
     <img src="/media/rango_cartaz.jpg" alt="Picture of Rango" />
     <br/>
     <hr>
-    <a href="{% url 'index' %}">Home</a>
     <br/>
     Essa página foi criada por {{ autor }}
+    <br/>
 </div>
 {% endblock %}

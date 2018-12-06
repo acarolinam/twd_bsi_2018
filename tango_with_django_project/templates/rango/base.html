@@ -45,18 +45,47 @@
     </div>
 </nav>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-            {% block sidebar_block %}
-                {% get_category_list category %}
-            {% endblock sidebar_block%}
-        </div>
-        <div class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 main">
-            {% block body_block %}{% endblock body_block%}
-        </div>
-    </div>
-</div>
+    <div class="container">
+
+      <div class="row row-offcanvas row-offcanvas-right">
+
+        <div class="col-12 col-md-9">
+          <p class="float-right hidden-md-up">
+            <button type="button" class="btn btn-primary btn-sm" data-toggle="offcanvas">Toggle nav</button>
+          </p>
+          <div class="jumbotron">
+            <h1>
+                {% block titulo_block %}
+                {% endblock %}
+            </h1>
+            <p>
+                {% block subtitulo_block %}
+                {% endblock %}
+            </p>
+          </div>
+          <div class="row">
+            <div class="col">
+                  {% block body_block %}
+                  {% endblock %}
+            </div><!--/span-->
+          </div><!--/row-->
+        </div><!--/span-->
+
+        <div class="col-6 col-md-3 sidebar-offcanvas" id="sidebar">
+          <div class="list-group">
+              {% block sidebar_block %}
+                <h1>Categorias</h1>
+                  {% get_category_list category %}
+              {% endblock %}
+          </div>
+        </div><!--/span-->
+      </div><!--/row-->
+
+      <footer>
+          <br/>
+      </footer>
+
+    </div><!--/.container-->
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
